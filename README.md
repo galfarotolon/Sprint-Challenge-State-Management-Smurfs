@@ -22,11 +22,28 @@ In this challenge, you are to build a Smurfs village utilizing context or Redux 
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] What problem does the context API help solve?
-- [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-- [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+1.  What problem does the context API help solve?
+Normally, a React application passes state down from parent to child by using props, but when building larger applications this can become complicated and confusing. 
+Context API solves exactly that problem. Props are no longer passed down from parent component to child and so on (known as prop drilling in the tech industry), now the props are stored in a ‘context’ object and retrieve the data in the components that will want to access those props (so they don't need to be passed down anymore, they can jump across several children without being passed down). 
+2.  In your own words, describe actions, reducers and the store and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+Actions are JavaScript objects that contain information. These are known in Redux as ‘the single source of information’ for the store. Actions come with a ‘type’ key that points towards the action to perform in that given scenario. Action creators are functions that create actions. 
+Reducers are the place where actions point towards. These are functions that take in  the current state and return a new altered state once the action calls a given reducer. 
+Finally, the Store is the object that  holds all the state of the application.
+ 
+ 
+3.  What is the difference between Application state and Component state? When would be a good time to use one over the other?
+Your application state is global, and your component state is local. Flux or a flux-like library like Redux, use what they call "stores" to hold application state. That means any component, anywhere in the app can access it (kind of like a database) so long as they hook into it.
+Component state however, lives within that specific component. As such, it can only be updated within that component and passed down to its children via props.
+ 
+4.  Describe redux-thunk, what does it allow us to do? How does it change our action-creators?
+With a plain basic Redux store, you can only do simple updates by dispatching an action. Middleware extends the store's functionality, and lets you write async logic that interacts with the store.
+Thunks are the recommended middleware for basic Redux side effects logic, including complex synchronous logic that needs access to the store, and other logic like axios requests.
+ 
+ 
+5.  What is your favorite state management system you've learned and this sprint? Please explain why!
+Whereas I understand the usefulness of Redux, I personally currently prefer the Context API state management system. Redux or Async Redux (with all the middleware) is still somewhat confusing and I believe much more time is needed with these state management systems in order to begin feeling comfortable with them.
+Context API solves a few issues such as prop drilling and also makes it way simpler to pass state through the application. The files needed, unlike Redux, are simple (context files and objects) and also to make the app work with them you just need to wrap them with Provider and Consumer methods. 
+
 
 ## Project Set Up
 
